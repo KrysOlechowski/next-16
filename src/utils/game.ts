@@ -164,6 +164,16 @@ const generateEquasionFromPattern = (
       equasion_string: `${random_a} + ${random_b} - ${random_c}`,
       correct_number: random_a + random_b - random_c,
     };
+  } else if (eq_pattern.name === EQUASION_PATTERN_NAME.PATTERN_X) {
+    const random_a = randomIntFromInterval(pattern[0][0], pattern[0][1]);
+    const random_b = randomIntFromInterval(pattern[1][0], pattern[1][1]);
+    const random_c = randomIntFromInterval(pattern[2][0], pattern[2][1]);
+    const random_d = randomIntFromInterval(pattern[3][0], pattern[3][1]);
+
+    return {
+      equasion_string: `${random_a} + ${random_b} + ${random_c} - ${random_d}`,
+      correct_number: random_a + random_b + random_c - random_d,
+    };
   } else {
     const random_a = randomIntFromInterval(pattern[0][0], pattern[0][1]);
     const random_b = randomIntFromInterval(pattern[1][0], pattern[1][1]);
