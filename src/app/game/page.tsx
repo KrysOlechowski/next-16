@@ -1,3 +1,11 @@
+import { Equasion } from "@/components/Equasion";
+
 export default function Home() {
-  return <div>Game</div>;
+  console.log("Server component");
+
+  return (
+    <div className="text-5xl">
+      <Equasion />
+    </div>
+  );
 }
