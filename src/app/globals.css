@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  /* yellow */
+  --color-bg-primary: #ffd700;
+  /* black */
+  --color-font-primary: #000000;
+  /* /size:48px */
+  --text-size-primary: var(--text-5xl);
+  /* size:36px */
+  --text-size-secondary: var(--text-4xl);
+  /* size:16px */
+  --text-size-ternary: var(--text-base);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

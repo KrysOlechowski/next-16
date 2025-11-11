@@ -1,4 +1,4 @@
-import { Equasion } from "@/components/Equasion";
+import { Equasion } from "@/components/game/Equasion";
 import {
   EQUASION_PATTERN_1,
   EQUASION_PATTERN_2,
@@ -8,7 +8,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex text-5xl">
+    <div className="flex text-5xl ">
       <Equasion EQpattern={EQUASION_PATTERN_1} />
       <Equasion EQpattern={EQUASION_PATTERN_2} />
       <Equasion EQpattern={EQUASION_PATTERN_3} />
