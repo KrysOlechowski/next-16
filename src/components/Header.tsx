@@ -14,6 +14,9 @@ export const Header = () => {
         <li className="my-2 mx-3">
           <a href="/api-test">API Test</a>
         </li>
+        <li className="my-2 mx-3">
+          <a href="/dynamic/1">Dynamic</a>
+        </li>
       </ul>
     </nav>
   );
