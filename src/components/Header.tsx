@@ -12,7 +12,7 @@ export const Header = () => {
           <a href="/playground">Playground</a>
         </li>
         <li className="my-2 mx-3">
-          <a href="/api-test">API Test</a>
+          <a href="/api-client">API Client</a>
         </li>
         <li className="my-2 mx-3">
           <a href="/dynamic/1">Dynamic</a>
