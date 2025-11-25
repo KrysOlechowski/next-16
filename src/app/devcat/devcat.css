@@ -16,11 +16,84 @@
   margin: 0 auto;
   max-width: 1300px;
   width: 100%;
-  border: 1px solid black;
   height: 40px;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.base {
+  background-color: #679a45;
+  border-radius: 50%;
+  width: 2000px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 23px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    scale: 100%;
+    /* width: 20px; */
+    /* height: 20px; */
+  }
+  50% {
+    opacity: 0;
+    scale: 30% 50%;
+
+    /* width: 15px; */
+    /* height: 15px; */
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+
+    /* width: 20px; */
+    /* height: 20px; */
+  }
+}
+
+.fade-out-element {
+  transform-origin: bottom;
+
+  opacity: 1;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: fadeOut;
+  animation-timing-function: linear;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    scale: 30% 50%;
+  }
+  50% {
+    opacity: 1;
+    scale: 100%;
+  }
+  100% {
+    opacity: 0;
+    scale: 20% 50%;
+  }
+}
+
+.fade-in-element {
+  transform-origin: bottom;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: fadeIn;
+  animation-timing-function: linear;
+}
+
+.test-indicator {
+  font-size: 8px;
+  position: absolute;
+  top: -29px;
 }
