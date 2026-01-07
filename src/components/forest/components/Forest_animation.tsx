@@ -7,7 +7,7 @@ import Tree_icon_3 from "@/components/forest/icons/Tree_3_icon.svg";
 import Tree_icon_4 from "@/components/forest/icons/Tree_4_icon.svg";
 import Tree_icon_5 from "@/components/forest/icons/Tree_5_icon.svg";
 
-const positions = [
+const treePositions = [
   // [2, 2, 20],
   // [4, 1, 16],
   // [6, 3, 12],
@@ -69,7 +69,7 @@ const positions = [
   // [100, 4, 16],
 ];
 
-const positions_single = [
+const singleTreePositions = [
   [25, 0, 1],
   [53, 3, 15],
   [50, 4, 20],
@@ -77,8 +77,8 @@ const positions_single = [
   [75, 1, 5],
 ];
 
-const opacity = [20, 40, 60, 80, 100];
-const size = [8, 11, 14, 17, 20];
+const opacityLevels = [20, 40, 60, 80, 100];
+const treeSizes = [8, 11, 14, 17, 20];
 
 type Props = {
   position: "top" | "bottom";
@@ -107,30 +107,30 @@ export const ForestAnimation = ({
     >
       <div className={`base ${baseClass}`}></div>
 
-      {positions.map((pos, i) => {
-        // const randomSize = randomIntFromInterval(0, 4);
-        const randomSize = pos[1];
+      {treePositions.map((treePosition, index) => {
+        // const sizeIndex = randomIntFromInterval(0, 4);
+        const sizeIndex = treePosition[1];
 
-        const AnimationDuration = 8000 + 3000 * randomSize;
-        const top = pos[2];
+        const animationDuration = 8000 + 3000 * sizeIndex;
+        const verticalOffset = treePosition[2];
 
         return (
-          <div key={`${pos[0]}-${i}`}>
+          <div key={`${treePosition[0]}-${index}`}>
             <div
               style={{
                 position: "absolute",
-                top: top,
-                left: `${pos[0]}%`,
-                animationDuration: `${AnimationDuration}ms`,
+                top: verticalOffset,
+                left: `${treePosition[0]}%`,
+                animationDuration: `${animationDuration}ms`,
                 transform: `${
                   isTop ? "translateY(-24px) rotate(0deg)" : "unset"
                 }`,
               }}
               className={`${animationClass} tree`}
             >
-              <Image height={size[randomSize]} src={icon} alt="Tree" />
+              <Image height={treeSizes[sizeIndex]} src={icon} alt="Tree" />
 
-              {/* <span className="test-indicator">{position[0]}</span> */}
+              {/* <span className="test-indicator">{treePosition[0]}</span> */}
             </div>
           </div>
         );
