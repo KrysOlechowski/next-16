@@ -26,12 +26,14 @@ export default function Home() {
         // icon={Rain_drop}
         icon={Tree_yellow}
         animation="fadeIn"
+        colors={["#fff", "#679a45", "#000"]}
       />
       <ForestAnimation
         position={"bottom"}
         // icon={Water_drop}
         icon={Tree_yellow}
         animation="fadeOut"
+        colors={["#679a45", "#f36b4b", "#679a45"]}
       />
     </div>
   );

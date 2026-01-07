@@ -84,19 +84,35 @@ type Props = {
   position: "top" | "bottom";
   icon: StaticImageData | string;
   animation?: "fadeIn" | "fadeOut";
-  baseColors?: [string, string];
+  colors: [string, string, string];
 };
 
 export const ForestAnimation = ({
   position,
   icon,
   animation = "fadeOut",
-  baseColors,
+  colors,
 }: Props) => {
   const isTop = position === "top";
-  const baseClass = isTop ? "color_transition_yellow" : "color_transition_red";
   const animationClass =
     animation === "fadeIn" ? "fade-in-element" : "fade-out-element";
+
+  const animationName = `color_change_${colors.join("_").replace(/#/g, "")}`;
+
+  const keyframes = `
+    @keyframes ${animationName} {
+      0% {
+        background-color: ${colors[0]};
+      }
+      50% {
+        background-color: ${colors[1]};
+      }
+      100% {
+        background-color: ${colors[2]};
+      }
+    }
+  `;
+
   return (
     <div
       className={`tree-icons-container `}
@@ -105,7 +121,15 @@ export const ForestAnimation = ({
         bottom: `${position === "top" ? "unset" : 0}`,
       }}
     >
-      <div className={`base ${baseClass}`}></div>
+      <style>{keyframes}</style>
+      <div
+        className="base"
+        style={{
+          animation: `${animationName} 20s infinite`,
+          transition: "color 10s ease",
+          top: isTop ? "-184px" : undefined,
+        }}
+      ></div>
 
       {treePositions.map((treePosition, index) => {
         // const sizeIndex = randomIntFromInterval(0, 4);
