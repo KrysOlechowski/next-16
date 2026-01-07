@@ -1,5 +1,6 @@
 import { randomIntFromInterval } from "@/utils/numbers";
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import Tree_icon_1 from "@/components/forest/icons/Tree_1_icon.svg";
 import Tree_icon_2 from "@/components/forest/icons/Tree_2_icon.svg";
 import Tree_icon_3 from "@/components/forest/icons/Tree_3_icon.svg";
@@ -81,7 +82,7 @@ const size = [8, 11, 14, 17, 20];
 
 type Props = {
   position: "top" | "bottom";
-  icon: "tree" | "needle";
+  icon: StaticImageData | string;
   animation?: "fadeIn" | "fadeOut";
   baseColors?: [string, string];
 };
@@ -89,10 +90,13 @@ type Props = {
 export const ForestAnimation = ({
   position,
   icon,
-  animation,
+  animation = "fadeOut",
   baseColors,
 }: Props) => {
   const isTop = position === "top";
+  const baseClass = isTop ? "color_transition_yellow" : "color_transition_red";
+  const animationClass =
+    animation === "fadeIn" ? "fade-in-element" : "fade-out-element";
   return (
     <div
       className={`tree-icons-container `}
@@ -101,40 +105,28 @@ export const ForestAnimation = ({
         bottom: `${position === "top" ? "unset" : 0}`,
       }}
     >
-      <div
-        className={`base ${
-          position === "top"
-            ? "color_transition_yellow"
-            : "color_transition_red"
-        }`}
-      ></div>
+      <div className={`base ${baseClass}`}></div>
 
-      {positions.map((position, i) => {
-        const randomTree = randomIntFromInterval(0, 1);
+      {positions.map((pos, i) => {
         // const randomSize = randomIntFromInterval(0, 4);
-        const randomSize = position[1];
+        const randomSize = pos[1];
 
         const AnimationDuration = 8000 + 3000 * randomSize;
-        const top = position[2];
-
-        console.log(AnimationDuration);
+        const top = pos[2];
 
         return (
-          <div key={`${position[0]}-${i}`}>
+          <div key={`${pos[0]}-${i}`}>
             <div
-              key={position[0]}
               style={{
                 position: "absolute",
                 top: top,
-                left: `${position[0]}%`,
+                left: `${pos[0]}%`,
                 animationDuration: `${AnimationDuration}ms`,
                 transform: `${
                   isTop ? "translateY(-24px) rotate(0deg)" : "unset"
                 }`,
               }}
-              className={`${
-                animation === "fadeIn" ? "fade-in-element" : "fade-out-element"
-              } tree`}
+              className={`${animationClass} tree`}
             >
               <Image height={size[randomSize]} src={icon} alt="Tree" />
 
