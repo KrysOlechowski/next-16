@@ -83,10 +83,15 @@ type Props = {
   position: "top" | "bottom";
   icon: "tree" | "needle";
   animation?: "fadeIn" | "fadeOut";
-  baseColors: [string, string];
+  baseColors?: [string, string];
 };
 
-export const ForestAnimation = ({ position, icon, animation }: Props) => {
+export const ForestAnimation = ({
+  position,
+  icon,
+  animation,
+  baseColors,
+}: Props) => {
   const isTop = position === "top";
   return (
     <div
@@ -124,7 +129,7 @@ export const ForestAnimation = ({ position, icon, animation }: Props) => {
                 left: `${position[0]}%`,
                 animationDuration: `${AnimationDuration}ms`,
                 transform: `${
-                  isTop ? "translateY(-24px) rotate(180deg)" : "unset"
+                  isTop ? "translateY(-24px) rotate(0deg)" : "unset"
                 }`,
               }}
               className={`${
