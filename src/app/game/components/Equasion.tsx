@@ -3,8 +3,8 @@
 import {
   EQUASION_PATTERN_TYPE,
   EQUASION_TRANSFORMED_TYPE,
-} from "@/types/game_types";
-import { generateEquasionAndTiles } from "@/utils/game";
+} from "@/app/game/types/game_types";
+import { generateEquasionAndTiles } from "@/app/game/utils/game";
 import { useEffect, useState } from "react";
 import { Tiles } from "./Tiles";
 

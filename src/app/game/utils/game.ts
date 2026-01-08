@@ -3,8 +3,8 @@ import {
   EQUASION_PATTERN_NAME_TYPE,
   EQUASION_PATTERN_TYPE,
   EQUASION_TRANSFORMED_TYPE,
-} from "@/types/game_types";
-import { randomIntFromInterval } from "./numbers";
+} from "@/app/game/types/game_types";
+import { randomIntFromInterval } from "../../../utils/numbers";
 
 export const generateEquasionAndTiles = (
   eq_pattern: EQUASION_PATTERN_TYPE

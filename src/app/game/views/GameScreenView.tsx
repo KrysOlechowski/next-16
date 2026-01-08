@@ -1,4 +1,4 @@
-import { Equasion } from "@/components/game/Equasion";
+import { Equasion } from "@/app/game/components/Equasion";
 import {
   EQUASION_PATTERN_1,
   EQUASION_PATTERN_2,

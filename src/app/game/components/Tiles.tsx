@@ -1,4 +1,4 @@
-import { EQUASION_TRANSFORMED_TYPE } from "@/types/game_types";
+import { EQUASION_TRANSFORMED_TYPE } from "@/app/game/types/game_types";
 
 type Props = {
   eqData: EQUASION_TRANSFORMED_TYPE;
