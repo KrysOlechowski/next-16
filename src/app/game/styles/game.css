@@ -1,0 +1,28 @@
+:root {
+  /* Game Theme Colors */
+  /* Main Screen View */
+  --color-game-main-bg: #ff6b9d;
+  --color-game-main-text: #2d4a7c;
+  --color-game-main-button: #ffd93d;
+  --color-game-main-button-hover: #ffb400;
+  --color-game-main-button-text: #1a1a2e;
+
+  /* Score Screen View */
+  --color-game-score-bg: #95e1d3;
+  --color-game-score-text: #38383e;
+  --color-game-score-value: #ff6464;
+  --color-game-score-button-increment: #a8e6cf;
+  --color-game-score-button-increment-hover: #56c596;
+  --color-game-score-button-set: #d4a5ff;
+  --color-game-score-button-set-hover: #b370ff;
+  --color-game-score-button-reset: #ff8c94;
+  --color-game-score-button-reset-hover: #ff5964;
+  --color-game-score-button-text: #2c2c54;
+
+  /* Game Screen View */
+  --color-game-screen-bg: #ffeaa7;
+  --color-game-screen-text: #2d3436;
+  --color-game-screen-button: #fd79a8;
+  --color-game-screen-button-hover: #e84393;
+  --color-game-screen-button-text: #ffffff;
+}
