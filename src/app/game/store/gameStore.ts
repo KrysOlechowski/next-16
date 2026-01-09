@@ -15,17 +15,29 @@ export const useGameStore = create<GameStore>((set) => ({
   resetScore: () => set({ score: 0 }),
 }));
 
+type DifficultyLevel = 1 | 2 | 3;
+
 interface GeneralGameStore {
-  difficultyLevel: number;
-  setDifficultyLevel: (level: number) => void;
+  difficultyLevel: DifficultyLevel;
+  setDifficultyLevel: (level: DifficultyLevel) => void;
   incrementDifficultyLevel: () => void;
+  infiniteTimer: boolean;
+  setInfiniteTimer: (value: boolean) => void;
+  demoMode: boolean;
+  setDemoMode: (value: boolean) => void;
 }
 
 export const useGeneralGameStore = create<GeneralGameStore>((set) => ({
   difficultyLevel: 1,
   setDifficultyLevel: (level) => set({ difficultyLevel: level }),
   incrementDifficultyLevel: () =>
-    set((state) => ({ difficultyLevel: state.difficultyLevel + 1 })),
+    set((state) => ({
+      difficultyLevel: ((state.difficultyLevel % 3) + 1) as DifficultyLevel,
+    })),
+  infiniteTimer: false,
+  setInfiniteTimer: (value) => set({ infiniteTimer: value }),
+  demoMode: false,
+  setDemoMode: (value) => set({ demoMode: value }),
 }));
 
 type GameView = "MAIN_SCREEN" | "GAME_SCREEN";
