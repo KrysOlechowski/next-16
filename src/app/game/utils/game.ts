@@ -35,10 +35,12 @@ const generateTiles = (
   numberOfCorrectTiles: number,
   numberOfTiles: number
 ) => {
+  let tiles;
+
   if (numberOfCorrectTiles === 3) {
     const correctNumbers = splitMax9(correctAnswer, numberOfCorrectTiles, 4);
 
-    return [
+    tiles = [
       { index: 0, value: correctNumbers[0], is_correct: true },
       { index: 1, value: correctNumbers[1], is_correct: true },
       { index: 2, value: correctNumbers[2], is_correct: true },
@@ -48,7 +50,7 @@ const generateTiles = (
     ];
   } else {
     const correctNumbers = splitMax9(correctAnswer, numberOfCorrectTiles, 4);
-    return [
+    tiles = [
       { index: 0, value: correctNumbers[0], is_correct: true },
       { index: 1, value: correctNumbers[1], is_correct: true },
       { index: 2, value: correctNumbers[2], is_correct: true },
@@ -59,6 +61,8 @@ const generateTiles = (
       { index: 7, value: randomIntFromInterval(3, 9), is_correct: false },
     ];
   }
+
+  return tiles.sort((a, b) => b.value - a.value);
 };
 
 function splitMax9(num: number, parts: number, min = 0) {
