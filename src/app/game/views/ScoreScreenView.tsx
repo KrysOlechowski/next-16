@@ -1,5 +1,6 @@
 import { useGameStore } from "../store/gameStore";
 import { gameStyles } from "../styles/gameStyles";
+import { GameButton } from "../components/GameButton";
 
 export function ScoreScreenView() {
   const score = useGameStore((state) => state.score);
@@ -8,6 +9,8 @@ export function ScoreScreenView() {
   );
   const setScore = useGameStore((state) => state.setScore);
   const resetScore = useGameStore((state) => state.resetScore);
+
+  const incrementValues = [1, 5, 10] as const;
 
   return (
     <div
@@ -22,30 +25,27 @@ export function ScoreScreenView() {
         {score}
       </div>
       <div className="flex gap-3 flex-wrap justify-center">
-        {[1, 5, 10].map((value) => (
-          <button
+        {incrementValues.map((value) => (
+          <GameButton
             key={value}
             onClick={() => incrementScoreByValue(value)}
-            className="px-4 py-2 rounded"
             style={gameStyles.scoreScreen.incrementButton}
           >
             +{value}
-          </button>
+          </GameButton>
         ))}
-        <button
+        <GameButton
           onClick={() => setScore(100)}
-          className="px-4 py-2 rounded"
           style={gameStyles.scoreScreen.setButton}
         >
           Set 100
-        </button>
-        <button
+        </GameButton>
+        <GameButton
           onClick={resetScore}
-          className="px-4 py-2 rounded"
           style={gameStyles.scoreScreen.resetButton}
         >
           Reset
-        </button>
+        </GameButton>
       </div>
     </div>
   );

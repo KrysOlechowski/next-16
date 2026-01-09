@@ -1,6 +1,7 @@
 import { useGameView } from "../store/gameStore";
 import { ScoreScreenView } from "./ScoreScreenView";
 import { gameStyles } from "../styles/gameStyles";
+import { GameButton } from "../components/GameButton";
 
 export function MainScreenView() {
   const toggleGameView = useGameView((state) => state.toggleGameView);
@@ -11,13 +12,13 @@ export function MainScreenView() {
       style={gameStyles.mainScreen.container}
     >
       <ScoreScreenView />
-      <button
+      <GameButton
         onClick={toggleGameView}
-        className="px-8 py-4 text-2xl rounded-lg"
         style={gameStyles.mainScreen.button}
+        className="px-8 py-4 text-2xl rounded-lg"
       >
         Start
-      </button>
+      </GameButton>
     </div>
   );
 }

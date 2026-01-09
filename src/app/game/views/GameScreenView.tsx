@@ -4,9 +4,10 @@ import {
   EQUASION_PATTERN_2,
   EQUASION_PATTERN_3,
   EQUASION_PATTERN_X,
-} from "@/const/GAME_CONST";
+} from "@/app/game/const/GAME_CONST";
 import { useGameView } from "../store/gameStore";
 import { gameStyles } from "../styles/gameStyles";
+import { GameButton } from "../components/GameButton";
 
 export function GameScreenView() {
   const toggleGameView = useGameView((state) => state.toggleGameView);
@@ -22,13 +23,13 @@ export function GameScreenView() {
         <Equasion EQpattern={EQUASION_PATTERN_3} />
         <Equasion EQpattern={EQUASION_PATTERN_X} />
       </div>
-      <button
+      <GameButton
         onClick={toggleGameView}
-        className="px-6 py-3 text-xl rounded-lg w-fit"
         style={gameStyles.gameScreen.button}
+        className="px-6 py-3 text-xl rounded-lg w-fit"
       >
         Finish
-      </button>
+      </GameButton>
     </div>
   );
 }

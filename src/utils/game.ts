@@ -1,10 +1,10 @@
-import { EQUASION_PATTERN_NAME } from "@/app/game/const/GAME_CONST";
+import { EQUASION_PATTERN_NAME } from "@/const/GAME_CONST";
 import {
   EQUASION_PATTERN_NAME_TYPE,
   EQUASION_PATTERN_TYPE,
   EQUASION_TRANSFORMED_TYPE,
-} from "@/app/game/types/game_types";
-import { randomIntFromInterval } from "../../../utils/numbers";
+} from "@/types/game_types";
+import { randomIntFromInterval } from "./numbers";
 
 export const generateEquasionAndTiles = (
   eq_pattern: EQUASION_PATTERN_TYPE

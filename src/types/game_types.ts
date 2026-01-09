@@ -4,7 +4,7 @@ import {
   EQUASION_PATTERN_3,
   EQUASION_PATTERN_NAME,
   EQUASION_PATTERN_X,
-} from "@/app/game/const/GAME_CONST";
+} from "@/const/GAME_CONST";
 
 export type EQUASION_PATTERN_NAME_TYPE = keyof typeof EQUASION_PATTERN_NAME;
 
