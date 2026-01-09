@@ -12,6 +12,7 @@ export type EQUASION_TRANSFORMED_TYPE = {
   name: EQUASION_PATTERN_NAME_TYPE;
   equasion_string: string;
   correct_number: number;
+  number_of_tiles_to_click: number;
   tiles: { index: number; value: number; is_correct: boolean }[];
   options: [];
 };

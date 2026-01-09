@@ -5,8 +5,6 @@ export const EQUASION_PATTERN_NAME = {
   PATTERN_X: "PATTERN_X",
 } as const;
 
-// 3 tiles => [7,9]. 7 + 3 + 3 = 13
-
 export const EQUASION_PATTERN_1 = {
   // a + bb
   // 7 + 11 = 18

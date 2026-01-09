@@ -20,6 +20,7 @@ export const generateEquasionAndTiles = (
     name: eq_pattern.name,
     equasion_string: transformedPattern.equasion_string,
     correct_number: transformedPattern.correct_number,
+    number_of_tiles_to_click: eq_pattern.number_of_correct_tiles,
     tiles: tiles,
     options: [],
   };

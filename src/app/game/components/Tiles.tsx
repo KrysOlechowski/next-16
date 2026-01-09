@@ -3,15 +3,23 @@ import { gameStyles } from "../styles/gameStyles";
 
 type Props = {
   eqData: EQUASION_TRANSFORMED_TYPE;
+  onTileClick?: (tileIndex: number) => void;
+  selectedTileIndices?: Set<number>;
 };
 
-export const Tiles = ({ eqData }: Props) => {
+export const Tiles = ({
+  eqData,
+  onTileClick,
+  selectedTileIndices = new Set(),
+}: Props) => {
   return (
-    <div className="grid grid-cols-3 gap-2 mt-4 w-fit">
+    <div className="grid grid-cols-3 gap-2 w-fit">
       {eqData.tiles.map((tile) => {
+        const isSelected = selectedTileIndices.has(tile.index);
         return (
           <div
             key={tile.index}
+            onClick={() => onTileClick?.(tile.index)}
             className={`
               flex items-center justify-center
               rounded-md shadow-sm
@@ -20,6 +28,7 @@ export const Tiles = ({ eqData }: Props) => {
               h-[40px] w-[40px]
               font-semibold text-base
               border-2
+              ${isSelected ? "ring-2 ring-blue-500 scale-105" : ""}
               ${
                 tile.is_correct
                   ? "bg-green-100 border-green-400 text-green-700 hover:bg-green-200"
