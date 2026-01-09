@@ -1,4 +1,8 @@
 export const gameStyles = {
+  gameGeneral: {
+    gameMainColor: "var(--color-game-main-color)",
+    gameAccentColor: "var(--color-game-accent-color)",
+  },
   mainScreen: {
     container: {
       backgroundColor: "var(--color-game-main-bg)",

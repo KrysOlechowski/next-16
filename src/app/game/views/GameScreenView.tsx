@@ -8,6 +8,7 @@ import {
 import { useGameView } from "../store/gameStore";
 import { gameStyles } from "../styles/gameStyles";
 import { GameButton } from "../components/GameButton";
+import { GameProgressBar } from "../components/ProgressBar";
 
 export function GameScreenView() {
   const toggleGameView = useGameView((state) => state.toggleGameView);
@@ -17,6 +18,7 @@ export function GameScreenView() {
       className="flex flex-col gap-4 p-4"
       style={gameStyles.gameScreen.container}
     >
+      <GameProgressBar />
       <div className="flex text-5xl">
         <Equasion EQpattern={EQUASION_PATTERN_1} />
         <Equasion EQpattern={EQUASION_PATTERN_2} />
