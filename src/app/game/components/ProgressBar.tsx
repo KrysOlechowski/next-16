@@ -1,16 +1,15 @@
-//make an boilerplate for a progress bar component, use installed progress bar from shadcn ui
+// GameProgressBar renders a countdown-style progress bar using the Shadcn UI Progress component and theme colors from gameStyles.
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
 import { gameStyles } from "../styles/gameStyles";
 
+const INITIAL_PROGRESS_VALUE = 70;
+
 export const GameProgressBar: React.FC = () => {
-  const value = 70;
-  const [progress, setProgress] = useState(value);
-  const [isTimerFinish, setIsTimerFinish] = useState(false);
+  const [progress, setProgress] = useState(INITIAL_PROGRESS_VALUE);
 
   useEffect(() => {
     if (progress <= 0) {
-      setIsTimerFinish(true);
       return;
     }
 
