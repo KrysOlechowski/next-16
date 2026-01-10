@@ -1,5 +1,5 @@
 import { useGameView, useGeneralGameStore } from "../store/gameStore";
-import { ScoreScreenView } from "./ScoreScreenView";
+import { HighScoreScreenView } from "./ScoreScreenView";
 import { gameStyles } from "../styles/gameStyles";
 import { GameButton } from "../components/GameButton";
 
@@ -17,7 +17,7 @@ export function MainScreenView() {
       className="flex flex-col items-center justify-center min-h-[50vh] gap-8"
       style={gameStyles.mainScreen.container}
     >
-      <ScoreScreenView />
+      <HighScoreScreenView />
       <div className="flex flex-col gap-4 w-full max-w-sm">
         <label className="flex flex-col gap-2">
           <span className="text-sm font-medium">Difficulty</span>
