@@ -25,6 +25,10 @@ interface GeneralGameStore {
   setInfiniteTimer: (value: boolean) => void;
   demoMode: boolean;
   setDemoMode: (value: boolean) => void;
+  currentStep: number;
+  setCurrentStep: (step: number) => void;
+  incrementStep: () => void;
+  resetStep: () => void;
 }
 
 export const useGeneralGameStore = create<GeneralGameStore>((set) => ({
@@ -38,6 +42,10 @@ export const useGeneralGameStore = create<GeneralGameStore>((set) => ({
   setInfiniteTimer: (value) => set({ infiniteTimer: value }),
   demoMode: false,
   setDemoMode: (value) => set({ demoMode: value }),
+  currentStep: 0,
+  setCurrentStep: (step) => set({ currentStep: step }),
+  incrementStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
+  resetStep: () => set({ currentStep: 0 }),
 }));
 
 type GameView = "MAIN_SCREEN" | "GAME_SCREEN";

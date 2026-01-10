@@ -13,30 +13,45 @@ import { GameProgressBar } from "../components/ProgressBar";
 import { getGameStepsByDifficulty } from "../utils/steps";
 
 export function GameScreenView() {
+  const isGameFinished = false;
+
   const toggleGameView = useGameView((state) => state.toggleGameView);
   const difficultyLevel = useGeneralGameStore((s) => s.difficultyLevel);
+  const currentStep = useGeneralGameStore((s) => s.currentStep);
+  const incrementStep = useGeneralGameStore((s) => s.incrementStep);
+  const resetStep = useGeneralGameStore((s) => s.resetStep);
 
   const gameSteps = getGameStepsByDifficulty(difficultyLevel);
+  const numberOfSteps = gameSteps.length;
   console.log(gameSteps);
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   const onNextStep = () => {
-    if (currentStepIndex < gameSteps.length - 1) {
-      setCurrentStepIndex(currentStepIndex + 1);
+    if (currentStep < gameSteps.length - 1) {
+      incrementStep();
     } else {
-      // Game finished logic here
-      console.log("Game Finished");
+      onGameFinish();
     }
   };
+
+  const onGameFinish = () => {
+    // Logic to handle game finish
+    console.log("Game Finished");
+    resetStep();
+    toggleGameView();
+  };
+
   return (
     <div
       className="flex flex-col gap-4 p-4"
       style={gameStyles.gameScreen.container}
     >
+      <div className="text-2xl font-semibold">
+        Step: {currentStep + 1}/{numberOfSteps}
+      </div>
       <GameProgressBar />
 
       <div className="flex text-5xl">
-        <Equasion EQpattern={gameSteps[currentStepIndex].equasion} />
+        <Equasion EQpattern={gameSteps[currentStep].equasion} />
       </div>
       <GameButton
         onClick={onNextStep}
