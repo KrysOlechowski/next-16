@@ -13,7 +13,6 @@ type EquasionProps = {
 };
 
 export const Equasion = ({ EQpattern }: EquasionProps) => {
-  console.log(EQpattern);
   const [eqData, setEqData] = useState<null | EQUASION_TRANSFORMED_TYPE>(null);
   const [selectedTileIndices, setSelectedTileIndices] = useState<Set<number>>(
     new Set()
