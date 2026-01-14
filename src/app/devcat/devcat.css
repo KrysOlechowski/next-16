@@ -1,6 +1,18 @@
-.background-green-primary {
-  background: black;
-  position: relative;
+:root {
+  --noise-opacity: 0.03; /* soft */
+  --noise-opacity: 0.05; /* normal */
+  --noise-opacity: 0; /* off */
+  --noise-opacity: 0.18; /* hard */
+}
+
+#bg-noise {
+  position: fixed;
+  inset: 0;
+  background-image: url("./images/noise-1.png");
+  background-repeat: repeat;
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .header-main {

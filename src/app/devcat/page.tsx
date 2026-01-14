@@ -16,25 +16,30 @@ import hero_logo from "@/components/forest/images/hero_logo.svg";
 import hero_logo_png from "@/components/forest/images/image 1.png";
 
 import Image from "next/image";
+import { DevCatTestingTools } from "./components/DevCatTestingTools";
 
 export default function Home() {
   return (
-    <div className="background-green-primary h-screen">
-      <Image alt="Krystian" src={hero_logo} className="hero_logo" />
-      <ForestAnimation
-        position={"top"}
-        // icon={Rain_drop}
-        icon={Tree_yellow}
-        animation="fadeIn"
-        colors={["#fff", "#679a45", "#000"]}
-      />
-      <ForestAnimation
-        position={"bottom"}
-        // icon={Water_drop}
-        icon={Tree_yellow}
-        animation="fadeOut"
-        colors={["#679a45", "#f36b4b", "#679a45"]}
-      />
+    <div className="bg-[#de982e] relative h-screen">
+      <div id="bg-noise"></div>
+      <main className="relative z-10">
+        <Image alt="Krystian" src={hero_logo} className="hero_logo" />
+        <ForestAnimation
+          position={"top"}
+          // icon={Rain_drop}
+          icon={Tree_yellow}
+          animation="fadeIn"
+          colors={["#fff", "#679a45", "#000"]}
+        />
+        <ForestAnimation
+          position={"bottom"}
+          // icon={Water_drop}
+          icon={Tree_yellow}
+          animation="fadeOut"
+          colors={["#679a45", "#f36b4b", "#679a45"]}
+        />
+        <DevCatTestingTools />
+      </main>
     </div>
   );
 }
