@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useDevCatStore } from "../store/devCatStore";
 
 export const DevCatTestingTools: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [noiseOpacity, setNoiseOpacity] = useState(0);
-  const [backgroundColor, setBackgroundColor] = useState("#de982e");
+  const { noiseOpacity, backgroundColor, setNoiseOpacity, setBackgroundColor } =
+    useDevCatStore();
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -17,26 +18,29 @@ export const DevCatTestingTools: React.FC = () => {
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, []);
 
-  const handleOpacityChange = (value: number) => {
-    setNoiseOpacity(value);
+  useEffect(() => {
     document.documentElement.style.setProperty(
       "--noise-opacity",
-      value.toString()
+      noiseOpacity.toString()
     );
-  };
-
-  const handleBackgroundColorChange = (color: string) => {
-    setBackgroundColor(color);
     const bgDiv = document.querySelector('[id="bg-noise"]') as HTMLElement;
     if (bgDiv) {
-      bgDiv.style.backgroundColor = color;
+      bgDiv.style.backgroundColor = backgroundColor;
     }
     const mainDiv = document.querySelector(
       ".bg-\\[\\#de982e\\]"
     ) as HTMLElement;
     if (mainDiv) {
-      mainDiv.style.backgroundColor = color;
+      mainDiv.style.backgroundColor = backgroundColor;
     }
+  }, [noiseOpacity, backgroundColor]);
+
+  const handleOpacityChange = (value: number) => {
+    setNoiseOpacity(value);
+  };
+
+  const handleBackgroundColorChange = (color: string) => {
+    setBackgroundColor(color);
   };
 
   return (
