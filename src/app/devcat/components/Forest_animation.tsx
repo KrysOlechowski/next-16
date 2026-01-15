@@ -87,6 +87,7 @@ type Props = {
   colors: [string, string, string];
   animationDuration?: number;
   animationSpeed?: number;
+  opacity?: number;
 };
 
 export const ForestAnimation = ({
@@ -96,6 +97,7 @@ export const ForestAnimation = ({
   colors,
   animationDuration = 20,
   animationSpeed = 1,
+  opacity = 1,
 }: Props) => {
   const isTop = position === "top";
   const animationClass =
@@ -123,6 +125,7 @@ export const ForestAnimation = ({
       style={{
         top: `${position === "top" ? 0 : "unset"}`,
         bottom: `${position === "top" ? "unset" : 0}`,
+        opacity: opacity,
       }}
     >
       <style>{keyframes}</style>

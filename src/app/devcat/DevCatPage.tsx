@@ -38,6 +38,7 @@ export const DevCatPage = () => {
           colors={topAnimation.colors}
           animationDuration={topAnimation.animationDuration}
           animationSpeed={topAnimation.animationSpeed}
+          opacity={topAnimation.opacity ?? 1}
         />
         <ForestAnimation
           position={"bottom"}
@@ -46,6 +47,7 @@ export const DevCatPage = () => {
           colors={bottomAnimation.colors}
           animationDuration={bottomAnimation.animationDuration}
           animationSpeed={bottomAnimation.animationSpeed}
+          opacity={bottomAnimation.opacity ?? 1}
         />
         <DevCatTestingTools />
       </main>

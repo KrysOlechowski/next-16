@@ -11,6 +11,7 @@ export const DevCatTestingTools: React.FC = () => {
     bottomAnimation,
     setNoiseOpacity,
     setBackgroundColor,
+    setAnimationOpacity,
     setTopAnimationColors,
     setBottomAnimationColors,
     setTopAnimationDuration,
@@ -114,6 +115,22 @@ export const DevCatTestingTools: React.FC = () => {
           value={backgroundColor}
           onChange={(e) => setBackgroundColor(e.target.value)}
           style={{ ...inputStyle, height: "40px" }}
+        />
+      </div>
+
+      {/* Animation Opacity */}
+      <div style={sectionStyle}>
+        <label style={labelStyle}>
+          Animation Opacity: {(topAnimation.opacity ?? 1).toFixed(2)}
+        </label>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={String(topAnimation.opacity ?? 1)}
+          onChange={(e) => setAnimationOpacity(parseFloat(e.target.value))}
+          style={{ width: "100%", cursor: "pointer" }}
         />
       </div>
 

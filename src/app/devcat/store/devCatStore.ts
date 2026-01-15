@@ -5,6 +5,7 @@ interface ForestAnimationConfig {
   colors: [string, string, string];
   animationDuration: number;
   animationSpeed: number;
+  opacity: number;
 }
 
 interface DevCatStore {
@@ -14,6 +15,7 @@ interface DevCatStore {
   bottomAnimation: ForestAnimationConfig;
   setNoiseOpacity: (opacity: number) => void;
   setBackgroundColor: (color: string) => void;
+  setAnimationOpacity: (opacity: number) => void;
   setTopAnimationColors: (colors: [string, string, string]) => void;
   setBottomAnimationColors: (colors: [string, string, string]) => void;
   setTopAnimationDuration: (duration: number) => void;
@@ -31,14 +33,21 @@ export const useDevCatStore = create<DevCatStore>()(
         colors: ["#fff", "#679a45", "#000"] as [string, string, string],
         animationDuration: 20,
         animationSpeed: 1,
+        opacity: 1,
       },
       bottomAnimation: {
         colors: ["#679a45", "#f36b4b", "#679a45"] as [string, string, string],
         animationDuration: 20,
         animationSpeed: 1,
+        opacity: 1,
       },
       setNoiseOpacity: (opacity: number) => set({ noiseOpacity: opacity }),
       setBackgroundColor: (color: string) => set({ backgroundColor: color }),
+      setAnimationOpacity: (opacity: number) =>
+        set((state: DevCatStore) => ({
+          topAnimation: { ...state.topAnimation, opacity },
+          bottomAnimation: { ...state.bottomAnimation, opacity },
+        })),
       setTopAnimationColors: (colors: [string, string, string]) =>
         set((state: DevCatStore) => ({
           topAnimation: { ...state.topAnimation, colors },
