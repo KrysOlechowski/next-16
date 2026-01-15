@@ -4,8 +4,20 @@ import { useDevCatStore } from "../store/devCatStore";
 
 export const DevCatTestingTools: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { noiseOpacity, backgroundColor, setNoiseOpacity, setBackgroundColor } =
-    useDevCatStore();
+  const {
+    noiseOpacity,
+    backgroundColor,
+    topAnimation,
+    bottomAnimation,
+    setNoiseOpacity,
+    setBackgroundColor,
+    setTopAnimationColors,
+    setBottomAnimationColors,
+    setTopAnimationDuration,
+    setBottomAnimationDuration,
+    setTopAnimationSpeed,
+    setBottomAnimationSpeed,
+  } = useDevCatStore();
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -35,36 +47,52 @@ export const DevCatTestingTools: React.FC = () => {
     }
   }, [noiseOpacity, backgroundColor]);
 
-  const handleOpacityChange = (value: number) => {
-    setNoiseOpacity(value);
+  const panelStyle = {
+    display: isVisible ? "block" : "none",
+    position: "fixed" as const,
+    top: "20px",
+    left: "20px",
+    background: "rgba(0, 0, 0, 0.8)",
+    color: "white",
+    padding: "20px",
+    borderRadius: "8px",
+    zIndex: 9999,
+    minWidth: "300px",
+    maxHeight: "90vh",
+    overflowY: "auto" as const,
   };
 
-  const handleBackgroundColorChange = (color: string) => {
-    setBackgroundColor(color);
+  const sectionStyle = {
+    marginBottom: "20px",
+    paddingBottom: "15px",
+    borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+  };
+
+  const labelStyle = {
+    display: "block" as const,
+    marginBottom: "8px",
+    fontSize: "14px",
+    fontWeight: "600" as const,
+  };
+
+  const inputStyle = {
+    width: "100%",
+    padding: "8px",
+    marginBottom: "8px",
+    borderRadius: "4px",
+    border: "none",
+    cursor: "pointer" as const,
   };
 
   return (
-    <div
-      style={{
-        display: isVisible ? "block" : "none",
-        position: "fixed",
-        top: "20px",
-        left: "20px",
-        background: "rgba(0, 0, 0, 0.8)",
-        color: "white",
-        padding: "20px",
-        borderRadius: "8px",
-        zIndex: 9999,
-        minWidth: "250px",
-      }}
-    >
+    <div style={panelStyle}>
       <h1 style={{ margin: "0 0 15px 0", fontSize: "18px" }}>
         DevCat Testing Tools
       </h1>
-      <div style={{ marginBottom: "15px" }}>
-        <label
-          style={{ display: "block", marginBottom: "8px", fontSize: "14px" }}
-        >
+
+      {/* Noise Opacity */}
+      <div style={sectionStyle}>
+        <label style={labelStyle}>
           Noise Opacity: {noiseOpacity.toFixed(2)}
         </label>
         <input
@@ -73,26 +101,159 @@ export const DevCatTestingTools: React.FC = () => {
           max="1"
           step="0.01"
           value={noiseOpacity}
-          onChange={(e) => handleOpacityChange(parseFloat(e.target.value))}
+          onChange={(e) => setNoiseOpacity(parseFloat(e.target.value))}
           style={{ width: "100%", cursor: "pointer" }}
         />
       </div>
-      <div>
-        <label
-          style={{ display: "block", marginBottom: "8px", fontSize: "14px" }}
-        >
-          Background Color: {backgroundColor}
-        </label>
+
+      {/* Background Color */}
+      <div style={sectionStyle}>
+        <label style={labelStyle}>Background Color: {backgroundColor}</label>
         <input
           type="color"
           value={backgroundColor}
-          onChange={(e) => handleBackgroundColorChange(e.target.value)}
-          style={{
-            width: "100%",
-            height: "40px",
-            cursor: "pointer",
-            borderRadius: "4px",
+          onChange={(e) => setBackgroundColor(e.target.value)}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+      </div>
+
+      {/* Top Animation */}
+      <div style={sectionStyle}>
+        <h3 style={{ margin: "0 0 10px 0", fontSize: "14px" }}>
+          Top Animation
+        </h3>
+        <label style={labelStyle}>Color 1</label>
+        <input
+          type="color"
+          value={topAnimation.colors[0]}
+          onChange={(e) => {
+            const colors = [...topAnimation.colors] as [string, string, string];
+            colors[0] = e.target.value;
+            setTopAnimationColors(colors);
           }}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+        <label style={labelStyle}>Color 2</label>
+        <input
+          type="color"
+          value={topAnimation.colors[1]}
+          onChange={(e) => {
+            const colors = [...topAnimation.colors] as [string, string, string];
+            colors[1] = e.target.value;
+            setTopAnimationColors(colors);
+          }}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+        <label style={labelStyle}>Color 3</label>
+        <input
+          type="color"
+          value={topAnimation.colors[2]}
+          onChange={(e) => {
+            const colors = [...topAnimation.colors] as [string, string, string];
+            colors[2] = e.target.value;
+            setTopAnimationColors(colors);
+          }}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+        <label style={labelStyle}>
+          Duration: {topAnimation.animationDuration}s
+        </label>
+        <input
+          type="range"
+          min="5"
+          max="60"
+          step="1"
+          value={topAnimation.animationDuration}
+          onChange={(e) => setTopAnimationDuration(parseFloat(e.target.value))}
+          style={{ width: "100%", cursor: "pointer", marginBottom: "8px" }}
+        />
+        <label style={labelStyle}>Speed: {topAnimation.animationSpeed}x</label>
+        <input
+          type="range"
+          min="0.1"
+          max="5"
+          step="0.1"
+          value={topAnimation.animationSpeed}
+          onChange={(e) => setTopAnimationSpeed(parseFloat(e.target.value))}
+          style={{ width: "100%", cursor: "pointer" }}
+        />
+      </div>
+
+      {/* Bottom Animation */}
+      <div style={sectionStyle}>
+        <h3 style={{ margin: "0 0 10px 0", fontSize: "14px" }}>
+          Bottom Animation
+        </h3>
+        <label style={labelStyle}>Color 1</label>
+        <input
+          type="color"
+          value={bottomAnimation.colors[0]}
+          onChange={(e) => {
+            const colors = [...bottomAnimation.colors] as [
+              string,
+              string,
+              string
+            ];
+            colors[0] = e.target.value;
+            setBottomAnimationColors(colors);
+          }}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+        <label style={labelStyle}>Color 2</label>
+        <input
+          type="color"
+          value={bottomAnimation.colors[1]}
+          onChange={(e) => {
+            const colors = [...bottomAnimation.colors] as [
+              string,
+              string,
+              string
+            ];
+            colors[1] = e.target.value;
+            setBottomAnimationColors(colors);
+          }}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+        <label style={labelStyle}>Color 3</label>
+        <input
+          type="color"
+          value={bottomAnimation.colors[2]}
+          onChange={(e) => {
+            const colors = [...bottomAnimation.colors] as [
+              string,
+              string,
+              string
+            ];
+            colors[2] = e.target.value;
+            setBottomAnimationColors(colors);
+          }}
+          style={{ ...inputStyle, height: "40px" }}
+        />
+        <label style={labelStyle}>
+          Duration: {bottomAnimation.animationDuration}s
+        </label>
+        <input
+          type="range"
+          min="5"
+          max="60"
+          step="1"
+          value={bottomAnimation.animationDuration}
+          onChange={(e) =>
+            setBottomAnimationDuration(parseFloat(e.target.value))
+          }
+          style={{ width: "100%", cursor: "pointer", marginBottom: "8px" }}
+        />
+        <label style={labelStyle}>
+          Speed: {bottomAnimation.animationSpeed}x
+        </label>
+        <input
+          type="range"
+          min="0.1"
+          max="5"
+          step="0.1"
+          value={bottomAnimation.animationSpeed}
+          onChange={(e) => setBottomAnimationSpeed(parseFloat(e.target.value))}
+          style={{ width: "100%", cursor: "pointer" }}
         />
       </div>
     </div>
