@@ -125,7 +125,7 @@ export const ForestAnimation = ({
       <div
         className="base"
         style={{
-          animation: `${animationName} 20s infinite`,
+          animation: `${animationName} 20s infinite alternate`,
           transition: "color 10s ease",
           top: isTop ? "-184px" : undefined,
         }}
