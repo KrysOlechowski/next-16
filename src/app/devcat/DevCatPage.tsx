@@ -36,12 +36,16 @@ export const DevCatPage = () => {
           icon={Tree_yellow}
           animation="fadeIn"
           colors={topAnimation.colors}
+          animationDuration={topAnimation.animationDuration}
+          animationSpeed={topAnimation.animationSpeed}
         />
         <ForestAnimation
           position={"bottom"}
           icon={Tree_yellow}
           animation="fadeOut"
           colors={bottomAnimation.colors}
+          animationDuration={bottomAnimation.animationDuration}
+          animationSpeed={bottomAnimation.animationSpeed}
         />
         <DevCatTestingTools />
       </main>

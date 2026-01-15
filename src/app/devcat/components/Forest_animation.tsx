@@ -85,6 +85,8 @@ type Props = {
   icon: StaticImageData | string;
   animation?: "fadeIn" | "fadeOut";
   colors: [string, string, string];
+  animationDuration?: number;
+  animationSpeed?: number;
 };
 
 export const ForestAnimation = ({
@@ -92,6 +94,8 @@ export const ForestAnimation = ({
   icon,
   animation = "fadeOut",
   colors,
+  animationDuration = 20,
+  animationSpeed = 1,
 }: Props) => {
   const isTop = position === "top";
   const animationClass =
@@ -125,7 +129,12 @@ export const ForestAnimation = ({
       <div
         className="base"
         style={{
-          animation: `${animationName} 20s infinite alternate`,
+          animationName: animationName,
+          animationDuration: `${animationDuration / animationSpeed}s`,
+          animationIterationCount: "infinite",
+          animationDirection: "alternate",
+          animationTimingFunction: "ease-in-out",
+          animationPlayState: "running",
           transition: "color 10s ease",
           top: isTop ? "-184px" : undefined,
         }}
