@@ -132,3 +132,7 @@
   position: absolute;
   top: -29px;
 }
+
+.devcat-page h1 {
+  color: #ff0000;
+}

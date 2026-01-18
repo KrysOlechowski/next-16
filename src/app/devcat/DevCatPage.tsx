@@ -20,7 +20,7 @@ export const DevCatPage = () => {
   }, [backgroundColor]);
 
   return (
-    <div className="text-white relative min-h-screen">
+    <div className="devcat-page text-white relative min-h-screen">
       <div id="bg-noise"></div>
       <main className="relative z-10 h-screen">
         {/* <Image alt="Krystian" src={hero_logo} className="hero_logo" /> */}
